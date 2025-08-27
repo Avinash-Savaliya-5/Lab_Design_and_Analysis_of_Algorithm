@@ -101,6 +101,8 @@ struct MinHeapNode* buildHuffmanTree(char data[], int freq[], int size) {
     return extractMin(minHeap);
 }
 
+int totalCost = 0;
+
 void printCodes(struct MinHeapNode* root, int arr[], int top) {
     if (root->left) {
         arr[top] = 0;
@@ -115,6 +117,7 @@ void printCodes(struct MinHeapNode* root, int arr[], int top) {
         for (int i = 0; i < top; ++i)
             printf("%d", arr[i]);
         printf("\n");
+        totalCost += root->freq * top;
     }
 }
 
@@ -129,5 +132,6 @@ int main() {
     int freq[] = { 5, 9, 12, 13, 16, 45 };
     int size = sizeof(arr) / sizeof(arr[0]);
     HuffmanCodes(arr, freq, size);
+    printf("Total cost = %d\n", totalCost);
     return 0;
 }
